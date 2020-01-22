@@ -1,0 +1,156 @@
+/* Text에 밑줄 쳐지는 CSS 효과 */
+.magicline:after{
+			content: '';
+			display: block;
+			width: 0%;
+			height: 2.5px;
+			background-color: #506763;
+			transition: width .3s;
+			/* 	→ transition:  하고자하는 행위, 걸리는 시간;
+					 */
+}
+
+.magicline:hover:after{
+	width: 100%;
+}
+
+/* 판넬 3D CSS 효과*/
+.layer{
+		box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0
+}
+		
+
+
+/* sns 버튼 애니메이션 CSS 효과*/
+div.middle{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.sns_btn{
+				display: inline-block;
+				/* a태그는 기본 inline , inline은 크기 조절x 
+				 inline-block : 너에게 사이즈를 부여하겠다*/
+				width: 45px;
+				height: 45px;
+				background-color: white;
+				margin: 0 10px;
+				border-radius: 30%;
+				/*border-radius: 박스를 둥글게 해주세요*/
+				
+				color: #252226;
+				overflow: hidden;
+				/* 버튼 안에서만 실행, 그 외 부분은 실행 x*/
+				
+				position: relative;
+				/* (상하좌우가 없을시) absolute로 기준잡으려고 한것임 */
+				text-align: center;
+			}
+			
+
+			.sns_btn i{
+				line-height: 45px;
+				font-size: 20px;
+				transition: 0.2s linear;
+
+			}
+
+			/* 아이콘을 클릭하면 커지게 하는 효과*/
+			.sns_btn:hover i{
+				transform: scale(1.3);
+				color: white; 
+			}
+			
+
+			.sns_btn::before{
+				content: "";
+				position: absolute;
+				width: 120%;
+				height: 120%;
+				background-color: #252226;
+				transform: rotate(45deg);
+				left: -110%;
+				top:90%;
+			}
+			.sns_btn:hover::before{
+				
+				animation: aaa 0.7s 1;
+				/*바깥으로 10 나가고*/
+				top: -10%;
+				left: -10%;
+			}
+
+			@keyframes car{
+				0%{
+					left: -110%;
+					top: 90%;
+				}50%{
+					left: 10%;
+					top: -30%;
+
+				}100%{
+
+					top: -10%;
+					left:-10%;
+				}
+			}
+
+			/* 네비게이션 Blur CSS 효과*/
+			ul{
+				margin: 0;
+				padding: 15px 0;
+				display: flex;
+				flex-direction: column;
+				width: 155px;
+			}
+			ul li{
+				list-style: none;
+				margin: 0 20px;
+				transition: 0.5s;
+			}
+			ul li a{
+				display: inline-block;
+				position: relative;
+				text-decoration: none;
+				padding: 5px;
+				font-size: 18px;
+				font-family: sans-serif;
+				color: #2f3138;
+				text-transform: uppercase;
+				transition: 0.5s;
+			}
+			ul:hover li a{
+				transform: scale(1.5);
+				opacity: .2;
+				filter: blur(5px);
+			}
+			ul li a:hover{
+				transform: scale(2);
+				opacity: 1;
+				filter: blur(0);
+				color: white;
+			}
+			ul li a:before{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #0c2461;
+				transition: transform .5s;
+				transform-origin: right;
+				transform: scaleX(0);
+				z-index: -1;	
+			}
+			ul li a:hover:before{
+				transition: transform .5s;
+				transform-origin: left;
+				transform: scaleX(1);
+			}
+			
+
+
+
+
+

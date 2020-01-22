@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--  -->
+	<meta charset="utf-8">
+	<title>프로필</title>
+	<script src="https://kit.fontawesome.com/b9b96aae93.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../css/effect.css">
+	
+
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
+
+		.wrap{
+			border: 1px solid black;
+			max-width: 1400px;
+			
+			display: flex;
+			justify-content: center;
+			box-sizing: border-box;
+			padding: 25px;
+			margin: 0 auto;
+		}
+
+		/* 사이드 내용 */
+		.side_wrap{
+			border: 1px solid red;
+			width: 450px;
+			margin-right: 25px;
+		}
+		.side_picture{
+			background-image: url("../img/캡처.PNG");
+			background-repeat: no-repeat;
+			height: 300px;
+			position: center center;
+			background-size: 100%;
+		}
+		.side_intro_group{
+			padding: 15px;
+		}
+		.name{
+			font-size: 30px;
+			font-family: 'Nanum Myeongjo', serif;
+		}
+		.intro{
+			font-size: 20px;
+			line-height: 22px;
+		}
+		.common_panel{
+			border-radius: 2px;
+			background-color: white;
+
+		}
+		.side_personal{
+			border-top: 1px solid #eee;
+			padding: 15px 0;
+			display: flex;
+			/* flex-direction : row(default) , column : 세로로 줘*/
+			flex-direction: column;
+			justify-content: space-between;
+			height: 165px;
+		}
+		
+		.side_personal_group{
+			padding: 0 15px;
+		}
+		.side_personal i{
+			color: #252226;
+			/*아이콘과 내용이 잘 띄움*/
+			width: 20px;
+		}
+		.side_sns{
+			border-top: 1px solid #eee;
+			padding: 15px 0;
+			/*height: 100px;*/
+		}
+
+		.common_panel{
+			margin-bottom: 25px;
+			/*padding: 15px;*/
+		}
+		.menu_title{
+			background-color: #753740;
+			color:white;
+			font-weight: bold;
+			padding: 7px 15px;
+			font-size: 18px;
+			border-top-left-radius: 2px;
+			border-top-right-radius: 2px;
+			display: flex;
+			align-items: center;
+		}
+
+		.menu_title i{
+			width: 20px;
+		}
+
+		/* 소개내용*/
+		.content_wrap{
+			border: 1px solid blue;
+			width: 850px;
+			
+		}
+		.content_padding{
+			padding: 15px;		
+		}
+
+		.bar_wrap{
+			margin-bottom: 20px;
+		}
+
+
+
+		.bar_border{
+			width: 815px;
+			height: 25px;
+			background-color: #f1f1f1;
+			overflow: hidden;
+			border-radius: 16px;
+		}
+
+		.bar_fill{
+			width: 0;
+			height: 25px;
+			background-color: #F4E5E2;
+			padding: 0 15px;
+			text-align: center;
+			line-height: 25px;
+			font-weight: bold;
+			font-size: 13px;
+
+		}
+		
+		.skill_title{
+			padding: 0px 0px 8px 8px;
+		}
+
+		/*content_padding 부모의 자식인  bar_wrap의 마지막 아이만 마진을 없애주세요*/
+		.content_padding > .bar_wrap:last-child{
+			margin: 0;
+		}	
+		.content_padding > table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		table, th, td { border: 1px solid #222f3e;}
+		th, td{ padding: 5px;}
+		th{background-color: #FFEEE7;}
+		.edu_table tr:nth-child(even) {
+			background-color: #f5f6fa
+;
+
+		}
+	
+		.edu_table tr td:first-child, .edu_table tr td:last-child{
+			text-align: center;
+		}
+
+		.edu_table tr:hover{
+			background-color: #E5CCC8;
+		}
+		.download_wrap{
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			padding: 25px;
+		}
+		.download_wrap div a{
+			padding: 5px 10px;
+			color:#996B61;
+			border-radius: 5px;
+			background-color: #FFEEE7;
+		}
+		.download_wrap div a:hover{
+			box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0;
+		}
+		
+		.fix_btn{
+			position: fixed;
+			right: 5px;
+			
+			color: white;
+			width: 70px;
+			height: 70px;
+			
+			border-radius: 50%;
+			/*자식이 정가운데로 오게 하고 싶으면 */
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			/* 이렇게 해주면 된다 */
+			font-size: 30px;
+			cursor: pointer;
+			box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0;
+
+		}
+		.fix_btn > i {
+			/*transform을 실행 할 떄 0.3초 동안으로 나타내주기 */
+			transition: transform .3s;
+		}
+		.fix_btn:hover > i{
+			transform: scale(1.3);
+		}
+		
+		.conn_btn, .close_btn{
+				bottom: 30px;
+				background-color: #A4403D;
+		}
+		.top_btn{
+			bottom: 120px;
+			background-color: #FFEEE7;
+		}
+		.msg_wrap{
+			position: absolute;
+			bottom: 30px;
+			right:100px;
+			background-color: white;
+			
+			border-radius: 5px;
+			border: 1px solid #2F3138;
+			box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0;
+		}
+		.note_wrap{
+			padding: 10px;
+			color: #A4403D;
+			font-size: 15px;
+			width: 700px;
+		}
+		.send_info{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			
+		}
+		.note_wrap > div{
+			margin-bottom: 8px;
+		}
+		.note_wrap input{
+			font-size: 20px;
+			color:#2F3138;
+			outline: none;
+			height: 35px;
+			padding: 7px 0 6px;
+			border: 0;
+			/* 부모사이즈의 최대한 길이로 길어져라 */
+			/* Name,Email은 700px를 나눠서 가짐*/
+			width: 100%;
+		}
+
+		.send_name, .send_email, .send_msg{
+			border: 1px solid #2F3138;
+			padding: 10px 35px 10px 15px;
+			width: 100%;
+		}
+		.area{width: 20px;}
+		.send_btn{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.send_btn > a{
+			width: 200px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 12px 15px;
+			border: 1px solid #A4403D;
+			border-radius:5px;
+		}
+		.err_msg{
+			color: red;
+			font-size: 20px;
+			/*display: none;  태그 자체를 없애버림 */
+			visibility: hidden; /* 태그는 존재, 보이지 않게 숨겨두는 것*/ 
+		}
+		.modal_wrap{
+			position: fixed;
+			z-index: 100;
+			background-color: rgba(0,0,0,0.4);
+			overflow: auto;
+			width: 100%;
+			height: 100%;
+			display: none;
+		}
+
+	</style>
+
+</head>
+<body>
+	<div class="top_btn fix_btn"><i class="fas fa-arrow-up"></i></div>
+	<div class="conn_btn fix_btn"><i class="far fa-envelope"></i></div>
+
+	<!-- 회색창 -->
+	<div class="modal_wrap">
+		<div class="close_btn fix_btn"><i class="far fa-times"></i></div>
+		<div class="msg_wrap">
+			
+			<div class="menu_title">
+				<i class="far fa-envelope"></i>
+				<span>Message</span>
+			</div>
+			<div class="note_wrap">
+				<div class="conn_note">Please contace me if you are interested.</div>
+				
+				<div class="send_info">
+					<div class="send_name">
+						<input type="text" class="send_input" placeholder="Name">
+					</div>
+					<div class="area"></div>
+					<div class="send_email">
+						<input type="text" class="send_input" placeholder="Email">
+					</div>
+				</div>
+				<div class="send_msg">
+					<input type="text" class="send_input" placeholder="Message">
+				</div>
+				<div class="send_btn">
+					<span class="err_msg">Please enter a value:/</span>
+					<a href="#"><i class="fas fa-paper-plane"></i>&nbsp;SEND MESSAGE</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrap">
+		<aside>
+			<div class="side_wrap">
+				<div class="common_panel layer">
+					<div class="side_picture "></div>
+					<div class="side_intro_group">
+						<div class="name">Siyoon Yang</div>
+						<div class="intro"> 
+							I'm Web Programmer.<br>
+							I can JAVA,SQL,HTML,CSS.<br>
+							<br>
+						</div>
+					</div>
+					<div class="side_personal_group">
+						<div class="side_personal">
+							<div><i class="fas fa-briefcase"></i>Web Programmer</div>
+							<div><i class="fas fa-graduation-cap"></i>Bachelor of Economics(Tax Accounting)</div>
+							<div><i class="fas fa-map-marked-alt"></i>Gwang-Ju S.Korea</div>
+							<div><i class="fas fa-envelope"></i>Y.hopeworld@gmail.com</div>
+							<div><i class="fas fa-mobile"></i>010-0000-0000</div>
+						</div>
+						<div class="side_sns">
+							<div class="middle">
+								<a class="sns_btn" href="#">
+									<i class="fab fa-facebook-f"></i>
+								</a>
+								<a class="sns_btn" href="#">
+									<i class="fab fa-twitter"></i>
+								</a>
+								<a class="sns_btn" href="#">
+									<i class="fab fa-google"></i>
+								</a>	
+								<a class="sns_btn" href="#">
+									<i class="fab fa-instagram"></i>
+								</a>
+								<a class="sns_btn" href="#">
+									<i class="fab fa-youtube"></i>
+								</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="common_panel layer nav">
+					<div class="menu_title">
+						<i class="fas fa-bars"></i> 
+						<span>Menu</span>
+					</div>	
+				<ul>
+					<li><a href="#">Tech Skills</a></li>		
+					<li><a href="#">Education</a></li>
+					<li><a href="#">License</a></li>
+				</ul>
+				</div>
+			</div>
+		</aside>
+
+		<section>
+			<div class="content_wrap">
+				<div class="common_panel layer nav">
+					<div class="menu_title"><i class="fas fa-laptop-code"></i><span>&nbsp;Tech Skills</span></div>	
+					<div class="content_padding">
+					<!-- ↓ 스킬 하나하나 만들기 -->
+					<!-- <div class="bar_fill" style="width: 70%;"> 각각 %가 다르게 표시 되어야해서  class안에 넣어줌 -->
+						<div class="bar_wrap"> 
+							<div class="skill_title"><strong>Programming(JAVA, Python, Delphi)</strong></div>
+							<div><div class="bar_border"><div class="bar_fill">70%</div></div></div>	
+						</div>
+						<div class="bar_wrap"> 
+							<div class="skill_title"><strong>Web Publishing(HTML, CSS, Javascript,jQuery)</strong></div>
+							<div><div class="bar_border"><div class="bar_fill">60%</div></div></div>	
+						</div>
+						<div class="bar_wrap"> 
+							<div class="skill_title"><strong>Database(Oracle,MongoDB)</strong></div>
+							<div><div class="bar_border"><div class="bar_fill">50%</div></div></div>	
+						</div>
+						<div class="bar_wrap"> 
+							<div class="skill_title"><strong>Web Develop(Servlet, Spring)</strong></div>
+							<div><div class="bar_border"><div class="bar_fill">70%</div></div></div>	
+						</div>
+						<div class="bar_wrap"> 
+							<div class="skill_title"><strong>Version Managing Tool(GitHub)</strong></div>
+							<div><div class="bar_border"><div class="bar_fill">70%</div></div></div>	
+						</div>
+					</div>
+				</div>
+
+
+				<div class="common_panel layer nav">
+					<div class="menu_title">
+						<i class="fas fa-user-edit"></i>
+						<span>&nbsp;Education</span>
+					</div>	
+						<div class="content_padding">
+							<table class="edu_table">
+								<thead>
+									<tr><th>No</th><th>Course name</th><th>Institution</th><th>period</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>1</td><td>전산세무회계과</td><td>동강대학</td><td>2011.03~2013.02</td></tr>
+									
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+					<div class="common_panel layer nav">
+					<div class="menu_title">
+						<i class="fas fa-address-card"></i>
+						<span>&nbsp;License</span>
+					</div>	
+						<div class="content_padding">
+							<table class="edu_table">
+								<thead>
+									<tr><th>No</th><th>Course name</th><th>Institution</th><th>period</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>1</td><td>운전면허2종보통</td><td>전남지방경찰청장</td><td>2011.10</td></tr>
+									<tr><td>2</td><td>전산회계1급</td><td>한국세무사회</td><td>2012.10</td></tr>
+									<tr><td>3</td><td>컴퓨터활용능력2급</td><td>대한상공회의소장</td><td>2012.07</td></tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				
+					<div class="common_panel layer nav">
+						<div class="menu_title">
+							<i class="fas fa-file-download"></i>
+							<span>Downloads</span>
+						</div>	
+						<div class="content_padding download_wrap">
+							<div class="git_wrap">
+								
+								<a href="https://github.com/Y-hopeworld" target="_blank" >
+									<span>Github</span>
+									<i class="fab fa-github"></i>
+								</a>
+								
+							</div>
+							<div class="resume_wrap">
+								<a href="https://github.com/Y-hopeworld" target="_blank">
+									<span>Download</span>
+									<i class="fas fa-download"></i>
+								</a>
+								
+							</div>
+						</div>
+				   	</div>
+				  
+						<div class="common_panel layer nav">
+							<div class="menu_title">
+								<i class="fas fa-bars"></i> 
+								<span>Menu</span>
+							</div>	
+				
+						<li><a href="#">Tech Skills</a></li>		
+						<li><a href="#">Education</a></li>
+						<li><a href="#">License</a></li>
+				
+						</div>
+
+
+
+			</div>
+			
+		</section>
+	</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	
+	/* $ =jQuery
+	   선택자 : CSS랑 똑같이 씀
+		document : HTML 문서가 완료되면 동작 할 작업들 */
+	// fuction() {} : Javascript에서 함수를 만들 때 사용  
+	// 				  이름이 없는 함수=익명함수
+	//				  
+	// 재사용할 필요가 없으니까 이름이 없음, 화면단이랑 어플리케이션 만들 떄 사용
+	$(document).ready(function(){
+			// $('.code').animate({width: '70%'}, 'slow');
+			// $('.design').animate({width: '60%'}, 'slow');
+			// $('.db').animate({width: '50%'}, 'slow');
+			// $('.spring').animate({width: '70%'}, 'slow');
+			// $('.git').animate({width: '70%'}, 'slow');	
+
+			// each : 자바의 for each
+			// $ : 안녕 난 제이쿼리야 
+			//  $(선택자).찾을거야(bar_fill).찾은 개수만큼 반복해줄거야(익명함수) 
+			//  $(this).text(); = 첫번째 bar_fill에 가서 텍스트 값을 가져와
+			// 	변수 var widthVal  
+			//  javascript는 모든 타입을 공통으로 var, 실행할 떄  값을 보고 자동으로 타입을  설정해줌
+			// animate : 애니메이션 효과를 줄거야! {width: widthVal} 값만큼! (70%,60%,50%)
+			//  1000 = 1초
+			$('.bar_wrap').find('.bar_fill').each(function(){
+				var widthVal = $(this).text();
+				$(this).animate({width: widthVal}, 1000);
+			})
+		});
+	// on : 연결해주는 함수
+	// 문서 전체에서 class가 send_input 애들을 찾아서 blur 했을 때 function을 실행하세요
+	// 빠져나온 this(나)의 값을 넣어줘
+	// var inputVal ,console.log('값: '+inputVal); 는 jQuery
+	$(document).on('blur','.send_input',function(){
+		var inputVal = $(this).val();
+
+		// input blur시 유효성 체크(테투리 및 경고 메세지 출력)
+		if(inputVal == ''){
+			// (값+type)===(값+type) 
+			$('.err_msg').css('visibility', 'visible');
+			$(this).parent().css('border','1px solid #c0392b');
+			// send_input의 부모 테두리를 칠해주세요
+		} else{
+			$('.err_msg').css('visibility', 'hidden');
+			$(this).parent().css('border','1px solid #222f3e');
+		}
+
+		// input 값을 모두 비교하여 값이 있으면 버튼 색상 변경
+		var code = 0;
+		$('.note_wrap').find('.send_input').each(function(){
+				// send_input에 있는 자료(3)를 반복해라
+				if($(this).val() == ''){
+					return false; // break: 반복문 종료  
+				} else{
+					code += 1;
+				}
+		});
+				if(code==3){
+					$('.send_btn > a').css('background-color','#A4403D')
+									  .css('color','white');
+				}else{
+					$('.send_btn > a').css('background-color','white')
+										.css('color','#4B2928');
+
+				}
+	});
+
+	$(document).on('click', '.conn_btn', function(){
+		$('.modal_wrap').css('display','block');
+		$(this).css('display', 'none');
+	});
+
+	$(document).on('click', '.close_btn', function(){
+		$('.modal_wrap').css('display','none');
+		$('.conn_btn').css('display','flex');
+	});
+</script>
+</html>
