@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>input(입력) 관련 태그</title>
+</head>
+<body>
+		<form name="" action="" method="">
+			
+
+			<input type="text" name="" placeholder="text" value="약오르지" readonly="readonly"><br>
+			<!-- readonly : 읽기전용-->
+			
+			<input type="password" name="" placeholder="password"><br> 
+			<!-- password : * 표시 -->
+
+			<input type="hidden" name="" placeholder="hidden"><br>
+			<!-- hidden : 숨김기능, 기능동작은 함 -->
+
+			<input type="search" name="" placeholder="search"><br>
+			<!-- x버튼나옴: 리셋시켜줌 -->
+
+			<!-- requit -->
+			<input type="url" name="" placeholder="url"><br>
+			<input type="email" name="" placeholder="email"><br>
+			
+			<input type="tel" name="" placeholder="tel"><br>
+			
+			<input type="number" name="" placeholder="number"><br>
+			
+			<input type="range" name="" placeholder="range"><br>
+			
+			<!-- radio : 동그라미 버튼, 선택지중에서 하나만 선택 할 수 있는데 그룹으로 묶어야 함  -->
+			<!-- name으로 그룹으로 묶어줘야함 -->
+			<hr>
+			<input type="file" name=""><br>
+			<label><input type="radio" name="subject">JAVA</label>
+			<label><input type="radio" name="subject">Python</label>
+			<label><input type="radio" name="subject">Oracle</label><br>
+
+			<!-- checkbox : 네모버튼, 선택지 중에서 다중으로 선택 할 수 있음 -->
+			<!-- 그룹으로 묶어도 되고 안 묶어도 됌 -->
+			<label><input type="checkbox" name="subject">복숭아</label>
+			<label><input type="checkbox" name="subject">포도</label>
+			<label><input type="checkbox" name="subject">수박</label>
+			<hr>
+			
+			<!-- button : 함수를 입력해야 데이터 전달, 사용자정의버튼 -->
+			<!--  		  함수를 입력하지않으면 아무 동작 하지않음 -->
+			<!-- submit : 누른 순간 유효성 체크 안하고 바로 JAVA로 데이터 전달 -->
+			<!-- 		  form태그 action 목적지로 데이터 전달 , 유효성체크 안해도 되는 때에만 사용 -->
+			<input type="button" name="" value="제출">
+			<input type="submit" name="">
+			<input type="reset" name="">
+
+			<input type="text" name="동선" id="똥선" class="도비" value ="메롱">
+				<!-- JAVA는 name의 값만 읽을 수 있음 -->
+
+		</form>
+
+</body>
+</html>

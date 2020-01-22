@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form(폼:입력) 관련 태그</title>
+</head>
+<body>
+	<!-- action : 자바에서 동작을 할 수 있게 만드는 명령문 , 목적지를 가는 수단 -->
+	<!-- method 는 GET , POST 중에서  사용을 하는데, 어떤 방법으로 갈건지 방향을 잡아줌 , 목적지를 어떻게 갈건지 정해주는 수단 -->
+	<form method="POST" action="Login" name="frm_login">
+		<!-- 입력받는 태그들 -->
+		<label for="inputid">ID</label>
+		<input type="text" name="" id="inputid" value="ccw1104"><br>
+
+		<label for="inputpw">PW</label>
+		<input type="password" name="" id="inputpw"><br>
+		<input type="button" name="" value ="로그인">
+	<!-- 선택자(Selector) -->
+	<!-- id :유일하게 하나만 식별(UNIQUE식별자, 중복X)  -->
+	<!-- class : 복수개를 선택하는  식별자, 중복 O -->
+	
+	<!-- filedset, legend : 폼 요소 그룹으로 묶기 -->
+	<form name="" action="" method="">
+		<fieldset>
+
+			<legend> 회원가입</legend>
+			<label for="memid">아이디</label>
+			<input type="text" name="" id="memid" placeholder="ID를 입력하세요"><br>
+
+			<!-- placeholder : 설명해주는 문장이 나오게 함, 문자를 입력하면 지워짐 -->
+			<label for="mempw">패스워드</label>
+			<input type="password" name="" id="mempw" placeholder="대소문자와 특수문자를 합쳐서 8자이상"><br>
+
+			<!-- maxlength : 문자 길이를 정함 -->
+			<!-- value : 고정된 값이 나오게 -->
+			<label for="memphone">전화번호(-없이)</label>
+			<input type="text" name="" id="memphone" value="010" maxlength="11"><br>
+
+		</fieldset>
+
+	</form> 
+
+
+	</form>
+</body>
+</html>

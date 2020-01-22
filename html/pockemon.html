@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>pokemon.html : 포켓몬스터 카드 도감</title>
+	<link rel="stylesheet" type="text/css" href="../common.css">
+	<style type="text/css">
+
+		@import url('https://fonts.googleapis.com/css?family=Single+Day&display=swap');
+	/*box-sizing : border-box 사이즈 고정 
+		width : 250px;
+		padding : 7px;
+		border: 1px;
+
+		현재 가로길이 content + padding + border 
+						 → 250 + 14 + 2 = 266px
+		box-sizing: border-box; 주 ㄴ순간 width 250px 고정
+						→ 250px = 234 + 14 + 2  */
+
+
+		.card{
+
+			border: 1px solid rgba(0, 0, 0, 0.3);
+			width: 250px;
+			height: 300px;
+			background-color: white;
+			box-sizing: border-box;
+			margin: 20px;
+			box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+			padding: 7px;
+			display: inline-block;
+
+
+		}
+
+		.type{
+			width: 60px;
+			height: 20px;
+			color: white;
+			font-size: 11px;
+			
+			/* width와 height 가 안 먹는 이유는 : inline이기 떄문*/
+			display: inline-block;
+
+			box-sizing: border-box;
+			/*가운데 정렬*/
+			text-align: center;
+			/*테두리 둥글게*/
+			border-radius: 10px;
+
+		}
+
+		.type_info{
+			text-align: right;
+		}
+
+		.name_info{
+			font-weight: bold;
+			/* 박스의 밑에만 줄을 그음*/
+			border-bottom: 1.5px solid rgba(0,0,0,0.2);
+			padding: 5px 0;
+
+		}
+
+		.sleep{
+				background-color: #FDA7DF;
+				
+		}
+
+		.sing{
+				background-color: #12CBC4;
+			}
+
+		.image_info{
+			
+			/* 그림 가운데 정렬 1
+			text-align: center; */
+		}
+				
+		/* 그림 가운데 정렬 2 */
+		/* 그림의 공백은 margin으로 메꿈 , 위아래는 0 , 양옆은 auto(이등분으로 나눠서 양옆으로 붙여줘) */
+		img.pokemon{
+			margin: 0 auto;
+			display: block;
+		}
+		div.detail_info{
+			margin-bottom: 5px;
+		}
+		table, th, td{
+			border: 1px solid lightgray;
+		}
+
+		table{
+			width: 225px;
+			margin: 0 auto;
+			background-color: #D4F4FA;
+			box-sizing: border-box;
+			/* border-collapse: 표가 하나로 합쳐짐 */
+			border-collapse: collapse;
+			font-size: 15px;
+		}
+
+		th{
+			text-align: left;
+			width: 55px;
+
+		}
+
+		td{
+			text-align: right;
+			
+		}
+		div.link_info{
+			border-top: 1px solid rgba(0,0,0,0.2);
+			text-align: right;
+			padding-top: 3px;
+		}
+		span.like_span{
+			/* 985 :content */
+			/* 하트사진: background(padding+content)*/
+			/* padding이 없어서 겹쳐짐, padding을 쓰면 앞으로 나옴*/
+			background-image: url('../img/ic_favorite.png');
+			background-repeat: no-repeat;
+			line-height: 18px;
+			padding-left: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="card">
+		<!-- type이라는 클래스와 sleep이란 클래스 두개  -->
+		<div class="type_info">
+			<span class="type sleep">노말</span>
+			<span class="type sing">페어리</span>
+		</div>
+		<div class="name_info ">
+			NO.001 푸린
+		</div>
+		<div class="image_info">
+			<img src="../img/043_039.png" class="pokemon">
+		</div>
+		<div class="detail_info">
+			<table>
+				<tr>
+					<th>분류</th>
+					<td>풍선포켓몬</td>
+				</tr>
+				<tr>
+					<th>키</th>
+					<td>0.5m</td>
+				</tr>
+				<tr>
+					<th>몸무게</th>
+					<td>5.5kg</td>
+				</tr>
+			</table>
+		</div>
+		<div class="link_info">
+			<span class="like_span">985</span>
+		</div>
+	</div>
+</body>
+</html>
