@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>연습</title>
+	<link rel="stylesheet" type="text/css" href="../../css/common.css">
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
+		*{ margin: 0; padding: 0;}
+		
+		body{font-family: 'Nanum Gothic', sans-serif;}
+	
+		a{ text-decoration: none;
+			color: inherit;
+			vertical-align: middle; }
+		p{
+			font-size: 15px;
+			font-weight: bold;
+		}
+		li{
+			list-style-type: none;
+		}
+		.u_l{
+			border-bottom: 1px solid #000;
+		}
+		.header{
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			height: 110px;
+			/* 가운데 정렬
+			display : block +  margin: 0 auto
+			display : flex + justify-content : center; */
+			}
+		.wda_page{
+			background-color: #f1f1f1;
+		}		
+		.member_page{
+			width: 1150px;
+			border: 1px solid green;
+			padding: 10px 150px 10px 150px;
+		}
+		.membership{
+			position: relative;
+			justify-content: center;
+			display: flex;
+			width: 100%;
+			height: 100px;
+			padding: 10px 0px 10px 10px;
+			/*border: 1px solid red;*/
+		}
+		.mem_logo_img{
+			
+			width: 150px;
+			height: 60px;
+		}
+		.mem_info{
+			padding-top: 30px;
+			font-size: 15px;
+			margin-right: 100px;
+		}
+		.item4{
+			width: 120px;
+			text-align:center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-right: 1px dashed gray;
+		}
+		.item4 > a{
+			display: block;
+		}
+		.item4 > a >span{
+			display: block;
+		}
+		.item4 > a >span:first-child{
+			padding-bottom: 5px;
+		}
+		.withdrawal{
+			/*border: 1px solid green;*/
+			margin-bottom: 30px;
+		}
+		.wda_title{
+			padding:10px 15px 0px;
+			font-size: 16px;
+			border-bottom: 2px solid #000;
+		}
+		.btn{
+			    display: inline-block;
+			    width: 200px;
+			    font-weight: 600;
+			    text-align: center;
+			    font-size: 15px;
+			    border-radius: 5px;
+			    cursor: pointer;
+			    padding: 11px 12px;
+			    border: 1px solid transparent;
+			    margin-right:10px;
+			}
+		.wda_send{
+			display: flex;
+			justify-content: center;
+			
+		}		
+		.wda_sub{
+			border: 1px solid orangered;
+			margin-bottom: 20px;
+			justify-content: center;
+			align-content: center;
+		}
+		.wda_wrap{
+			/*background-color: #fab1a0;*/
+			position: relative;
+			width: 100%;
+			margin: 0 auto;
+			padding: 10px 55px 10px;
+		}
+	
+	/* 모달 창*/
+		.modal_wrap{
+			    position: fixed;
+			    z-index: 1000;
+			    background-color: rgba(0,0,0,0.4);
+			    overflow: auto;
+			    width: 100%;
+			    height: 100%;
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    display: none;
+		}
+		.w_modal_wrap{
+			width: 400px;
+			/*border: 1px solid red;*/
+			font-family: 'Noto Sans KR', sans-serif;
+			background-color: #fff;
+			box-shadow: 0 4px 16px rgba(20,23,28,.25);
+		}
+		.wda_header{
+			padding:10px 15px 0px;
+			border-bottom: 1px solid #dcdcdc;
+			font-size: 22px;
+			font-weight: 30;
+		}
+		.wda_wrap2{
+			padding: 10px 20px 5px 20px;
+			}
+		.wda_modal_content{
+			padding: 20px 10px 5px 10px;
+			margin-bottom: 8px;
+
+		}
+		.content_q{
+			text-align: center;
+			font-size: 20px;
+			/*border: 1px solid blue;*/
+			margin-bottom: 25px;
+		}
+		.wda_modal_display{
+			/*border: 1px solid green;*/
+			height: 50px;
+			}
+
+			.twobtn{
+				/*border: 1px solid orangered;*/
+				text-align: center;
+			}
+		.modal_btn{			
+			width: 150px;
+			height: 50px;
+			font-size: 15px;
+			border: 1px solid #f1f1f1;
+			cursor: pointer;			
+		}
+		.btn_yes{
+			background-color: #f3f3f3;
+			color: #000;
+			margin:0 2px 0 2px;
+		}
+		.btn_yes:hover{
+			border: 1px solid #535c68;
+		}
+		.btn_no{
+			background-color: #000;
+			color: #f3f3f3;
+			margin:0 2px 0 2px;
+		}
+		.btn_no:hover{
+			border: 1px solid #535c68;
+		}
+		#member_wda{
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="modal_wrap">
+	<div class="w_modal_wrap">
+		<section class="wda_wrap2">
+			<div class="wda_header">
+				<span> 회원탈퇴 </span>	
+			</div>
+				<div class="wda_modal_content">
+					<div class="content_q">
+						고객님의 포인트가 소멸됩니다.<br>
+						그래도 탈퇴하시겠습니까?					
+					</div>
+					<div class="wda_modal_display">
+						<div class="twobtn">
+								<button class="modal_btn btn_yes">회원탈퇴</button>
+								<button class="modal_btn btn_no">취소</button>
+						</div>	
+					</div>
+				</div>				
+		</section> 
+	</div>
+</div>
+<!-- ----------------------------------------------------------------------------------------------------- -->
+<div class="wrap" style="display: flex; justify-content: center;">
+	
+
+<div class="member_page">	
+	<div class="header">
+		<div class="mem_logo_img">
+			<img src="../../img/캡처.PNG" class="img_logo">
+		</div>
+	</div>
+	<div class="wda_page">
+
+	<div class="membership">
+		
+		<div class="mem_info">
+			<strong>양시윤</strong> 님의 회원등급은
+			<strong>W PEOPLE</strong>입니다.
+			<input type="button" id="btn_grade" value="등급혜택">
+		</div>
+			
+			<div class="item4 coupon">
+					<a href="#">
+						<span><h4>쿠폰</h4></span>
+						<span><span class="u_l">0</span>개</span>
+					</a>							
+			</div>
+			<div class="item4" id="point">
+				<a href="#">
+						<span><h4>포인트</h4></span>
+						<span><span class="u_l">0</span>개</span>
+					</a>	
+						
+			</div>
+			<div class="item4" id="orderlist">
+				<a href="#">
+						<span><h4>구매중인 상품</h4></span>
+						<span><span class="u_l">0</span>개</span>
+					</a>
+			</div>
+
+		</div>
+	</div>
+
+<div class="wda_wrap">
+<div class="withdrawal">
+	<div class="wda_title"><h2>회원탈퇴</h2> </div>
+	<div class="wda_content">
+		<p>Laurent를 이용하는데 불편한 사항이 있으셨나요?</p>
+		사이트를 이용하시며, 불편한 점이 있으셨다면 아래에 사유를 남겨주세요.<br>
+		보다 나은 LAURENT가 될 수 있도록 참고 하겠습니다. 회원 탈퇴 전 아래의 사항들을 확인해 주세요.<br>		
+		<ul>
+			<li>
+			1.회원님께서 탈퇴시, 탈퇴와 함께 삭제되는 정보입니다.
+				<span>
+					Laurent에 저장된 개인정보
+					L-point 정보 및 회원등급
+					온라인 쿠폰정보
+				</span>	
+			</li>
+			<li>
+				2.회원탈퇴 시점을 기준으로 배송중 혹은 반품이나 교환중에 있는 물품이 없을 경우에만 탈퇴처리가 가능합니다.
+			</li>
+			<li>
+				3. 회원 탈퇴 후 30일 동안 재가입이 제한 됩니다.
+			</li>
+			<li>
+				4.회원탈퇴 하시면 보유하고 계신 쿠폰 및 포인트, 상품권이 자동 소멸됩니다.
+			</li>
+			<li>
+				5.주문이력이 있는 고객님의 정보는 회원탈퇴 이후에도 [전자상거래등에서의 소비자보호에 관한 법률]에서 정한 일정기간동안 보존됩니다.
+			</li>
+			<li>
+				6.SMS, E-MAIL 광고를 수신하셨다면 탈퇴 이후 약 2일~3일 정도까지 광고가 전송될 수 있사오니, 이 점 양해 부탁드립니다.
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="wda_sub">
+	<div> 회원탈퇴 신청</div>
+	<div class="wda_sub_content">
+		<form>
+			<label> 비밀번호
+				<input type="password" id="wda_pass" name="">
+			</label>
+		</form>	
+	</div>	
+</div>
+<div class="wda_send">
+		<button type="button" class="btn btn_wda">회원탈퇴</button>
+	
+	<div>
+		<button type="button" class="btn cancel">취소</button>
+	</div>
+	</div>
+</div>
+</div>
+</div>	
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).on('click','.btn_wda',function(){
+		$('.modal_wrap').css('display','flex');
+	});
+
+	$(document).on('click','.btn_no',function(){
+		$('.modal_wrap').css('display','none');
+
+	});
+</script>
+</html>
