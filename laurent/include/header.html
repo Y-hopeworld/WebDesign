@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Laurent</title>
+	<link rel="stylesheet" type="text/css" href="../../css/common.css">
+	<script src="https://kit.fontawesome.com/b9b96aae93.js" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+	 div.header_wrap{
+	 	width: 100%;
+	 	background-color: #fff;
+	 	box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
+	 	/* 누가 먼저 앞으로 나올지 정해주는 명령어, 숫자가 클수록 앞으로 나옴*/
+	 	z-index: 999;
+
+	 }
+	 div.header_content{
+	 	width: 1400px;
+	 	background-color:#fff;
+	 	margin: 0 auto;
+	 	height: 65px;
+	 	box-sizing: border-box;
+	 	border-left: 1px solid red;
+	 	border-right: 1px solid red;
+	 	/*flex 요소배치*/
+	 	display: flex;
+	 	justify-content: space-between;
+	 	/* 흰색 여백에 가로여백을 맞춰서 주겠다*/
+	 	align-items: center;
+	 	/* 사이즈가 달라도 수평이 같아지는 것 */
+	 }
+	 
+	 .header_content_logo{}/*background-color:red;*/
+	 .header_content_search {} /* : 검색창과 돋보기 사이 간격  붙이기 background-color: blue*/
+	 .header_content_search_group{
+	 	display: flex;
+	 	align-items: center;
+	 	background-color: #f2f3f5;
+	 	border-radius: 2px;
+
+	 }
+	 .header_content_search_input{
+				background-color: transparent;
+				font-size: 13px;
+				width: 220px;
+				height: 
+				border-color: transparent;
+				height: 44px;
+				border-radius: 2px;
+				padding: 10px 12px;
+				outline: none; 
+				/* input 태그시 Focus시 파랑테두리가 나타나는데 그걸 없애주는 것*/
+
+  	 }
+
+	 .header_content_search_btn{
+	 	/* transparent :투명*/
+	 	border-color: transparent;
+	 	background-color: transparent;
+		width: 44px;
+	 	height: 44px;
+	 	cursor: pointer;
+	 	color: #0652DD;
+	 	border-top-right-radius: 2px;
+	 	border-bottom-right-radius: 2px;
+	}
+	.header_content_search_btn:hover{
+		background-color: #95afc0;
+		color:#0652DD;
+	}
+
+	 .header_content_nav{
+	 	display: flex;
+	 	align-items: center;
+	 	justify-content: space-between;
+	 	width: 574px;
+	 	height: 70px;
+	 	} /*background-color: green;*/
+	.header_content_nav > div {
+		/*border: 1px solid red;*/
+
+	}
+
+	 .header_content_member{
+	 	/*width: 160px;*/
+	 	display: flex;
+	 	/* width, display :  */ 
+	 	justify-content: space-between;
+	 	/*justify-content : flex요소 중 하나, 여백이 잇으면 가운데로 정렬을 해줌*/
+	 	align-items:center; }
+
+	
+	.header_content_member > div {
+		padding: 10px 0px 10px 3px;
+	} 	
+
+	.header_content_dropdown_group{
+		position: relative;
+	}
+	.header_content_dropdown_wrap:hover .header_dropdown{
+		display: block;
+	}
+	 	
+	.header_content_dropdown_group > a{
+			display: inline-block;
+			padding: 12px 15px;
+			font-weight: 400;
+			border: 1px solid transparent;
+			border-radius:2px;
+			height: 45px;
+			color: #506763;
+			line-height: 19px;
+
+	}
+
+
+	.header_content_dropdown_wrap:hover > div > a,
+	.header_content_member_cart:hover > a
+	{
+		background-color: rgba(20,23,28,.05);
+		border-color: rgba(20,23,28,.05);
+	}
+
+	.header_content_member_cart > a {
+		display: inline-block;
+		width: 45px;
+		height: 45px;
+		border-radius: 50%;
+		color: #506763;
+		border: 1px solid transparent;
+		text-align: center;
+		padding: 12px;
+		line-height: 19px;
+
+	}
+
+	 	/*background-color: yellow;*/
+
+	.header_content_logo_img{
+		/*width: 70px;*/
+		height:65px;
+		vertical-align: middle;
+
+
+	}
+
+	.header_dropdown_menu{
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		box-shadow: 0 4px 16px rgba(20,23,28,.25);
+		background-color: white;
+		padding: 10px 0;
+		
+	
+	}
+	.header_dropdown_menu a{
+		display: inline-block;
+		font-size: 12px;
+		color: #505763;
+		text-align: center;
+		padding: 5px 15px;
+		font-weight: 400;
+		width: 130px;
+		position: relative;
+		z-index: 100;
+	}
+	.header_dropdown_menu a:hover{
+		color: #007791;
+		background-color: #f2f3f5;
+	}
+
+	.header_dropdown{
+		position: absolute;	
+		top: 52px;
+		left: 0;
+		display: none;	
+
+	}
+
+
+	.arrow{
+		position: absolute;
+		top: -8px;
+		left: 15px;
+		width: 15px;
+		height: 15px;
+		transform: rotate(45deg);
+		background-color: white;
+		border-color: transparent transparent #fff transparent;
+		z-index: 99;
+	}
+
+	.header_content_nav > div{
+		padding: 10px 0;
+	}
+
+	/* 모달 로그인 창*/
+	.modal_wrap{
+		position: fixed;
+		z-index: 1000;
+		background-color: rgba(0,0,0,0.4);
+		overflow: auto;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		display: none;
+	}
+	.modal_content{
+		position: relative;
+		width: 430px;
+		height: 540px;
+		padding: 40px 39px 70px;
+		margin: 0 auto;
+		background-color: white;
+		box-shadow: 0 4px 10px 0 rgba(0,0,0,.2),
+		0 4px 20px 0 rgba(0,0,0,0.19);
+		border-radius: 2px;
+		overflow: hidden;
+	}
+	.login_sign{
+		
+		margin-bottom: 20px;
+		text-align: center;
+		font-size: 29px;
+		font-weight: bold;
+
+	}
+	.selected{
+		display: flex;
+		justify-content: center;
+	}
+	
+	a{
+		text-decoration: none;
+		outline: none;
+	}
+	.div_input{
+		position: relative;
+		border: 1px solid  white;
+		width: 100%
+		margin-bottom: 10px;
+		padding: 10px 10px 10px 10px;
+	
+
+	}
+	.input_login{
+		border-width: 0px;
+		border-bottom: 1px solid #f1f1f1;
+		width: 100%;
+		padding:7px 0px 6px 0px;
+		outline: none;
+
+	}
+	.input_box{
+		display: block;
+		overflow: hidden;
+	}
+
+	.login_close{
+		position: absolute;
+		top: 7px;
+		right: 7px;
+	}
+
+	.login_close > button {
+		color:rgb(142, 142, 142);
+		border: none;
+		background-color: white;
+		font-size: 30px;
+		cursor: pointer;
+		outline: none;
+	}
+	.login_close > button:hover{
+		color: #2d3436;
+	}
+	
+	.pw_eye{
+		position: absolute;
+		color:#AAA;
+		font-size: 17px;
+		top: 0px;
+		right: 7px;
+		cursor: pointer;
+		height: 45px;
+		line-height: 45px;
+		width: 30px;
+		text-align: center;
+	}
+
+	a#btn_login{
+			display: block;
+			background-color: #2d3436;
+			color: white;
+			font-size: 15px;
+			width: 100%;
+			text-align: center;
+			padding: 13px 13px;
+			margin: 13px 0px 13px 0px;
+
+	}
+	a#conn_login{
+		display: block;
+		background-color: white;
+		font-size: 15px;
+		width: 100%;
+		padding: 5px 5px;
+		margin: 0px 0px 5px 0px;
+
+	}
+	#conn_login  i{
+		width: 100%;
+		padding: 6px 6px;
+	}
+	#member{
+		border-top: 1px solid #f1f1f1;
+		font-size: 13px;
+		text-align: center;
+		padding: 10px 0px 5px 0px;
+	}
+
+	.mem_join{
+		display: block;
+		background-color: #b2bec3;
+		font-size: 17px;
+		width: 100%;
+		padding: 15px 15px;
+		margin: 13px 0px 13px 0px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	#check > label{
+		
+		line-height: 15px;
+
+	}
+	.id_save{
+		display: flex;
+		align-items: center;
+		padding: 5px 0px 0px 5px;
+	}
+	.start{
+		display: flex;
+		align-items: center;
+	}
+	</style>
+</head>
+<body>
+	
+	<div class="modal_wrap">
+		<div class="modal_content">
+			<div class="login_close"><button><i class="fas fa-times"></i></button></div>
+			<div class="login_box">
+				<div class="login_sign">Login</div>
+				<section>
+				<form class="frm_login">
+						<div class="div_input" id="login_input">
+							<input type="text" placeholder="아이디" class="input_login" id="login_id" >
+								<span class="input_box"></span>
+						</div>	
+						
+
+						<div class="div_input" id="login_input">
+							<input type="password" placeholder="비밀번호" class="input_login" id="login_pw">
+							<span class="pw_eye"> 
+								<i class="fas fa-eye-slash"></i>
+							</span>
+						</div>
+					
+							<div class="id_save">
+								<input type="checkbox" id="id_save">
+								<label for="id_save" class="label">아이디 저장</label>
+							</div>
+						<div>
+							<a id="btn_login" href="#">로 그 인</a>
+						</div>	
+				</form>
+					<div class="start">
+						<div>
+							<a href="http://www.naver.com" id="conn_login"><i class="fab fa-line">&nbsp;네이버로 시작하기</i></a>
+						</div>
+						<div>
+							<a href="#" id="conn_login"><i class="fab fa-kaggle">&nbsp;카카오로 시작하기</i></a>
+						</div>
+					</div>
+					<div id="member">
+						<a href="#">아이디 찾기</a>&nbsp;<span class="si"> | </span>&nbsp;
+						<a href="#">비밀번호 찾기</a>
+					</div>
+					
+					<div class="mem_join">회원가입</div>
+					<div class="recomm">
+						회원가입을 하시면 고객님을 위한<br>
+						다양하고 특별한 혜택이 준비 되어 있습니다! <br> 
+						특별한 혜택을 받으러 가보실까요◟( ˘ ³˘)◞ ♡
+					</div>
+
+				</section>
+				 </div>
+			</div>
+			</div>	
+		
+
+
+
+	
+
+	<header>
+		<!-- 1. header에 있다고 표시
+			 2. index.html에 있는 wrap과 content 충돌이 날 수도 있기 때문에  -->
+		<div class="header_wrap">
+			<div class="header_content">
+				
+
+				 <div class="header_content_logo">
+				 	<a href="#">
+				 		<img class="header_content_logo_img" src="../../img/20.PNG" alt="로고이미지">
+						<!-- <span>Laurent</span> -->
+					</a>
+				 	</div>
+				 	
+				 <div class="header_content_search">
+					<form name="frm_search" action="" method="GET">
+						<div>
+							<input type="text" placeholder="무엇이든 검색하기" name="keyword" class="header_content_search_input">
+							<button type="button" class="header_content_search_btn"> 
+								<i class="fas fa-search"></i></button>		
+						</div>
+					</form>	
+				</div>
+				<div class="header_content_nav">
+					<div class="header_content_dropdown_group "><a href="#" class="magicline">공지사항</a></div> 
+					<div class="header_content_dropdown_group"><a href="#" class="magicline">개인결제창</a></div>
+					
+					<div class="header_content_dropdown_wrap">	
+					<div class="header_content_dropdown_group">
+						<a href="#" class="magicline">문의하기</a>
+						<div class="header_dropdown">
+									<div class="arrow"></div>
+									<ul class="header_dropdown_menu">
+										<li><a href="#">Q&A</a></li>
+										<li><a href="#">MILEAGE</a> </li>
+										<li><a href="#">DELIVERY</a></li>
+								</ul>
+							</div>
+						</div>
+				</div>
+				
+
+				<div class="header_content_member">
+					<div class="header_content_dropdown_wrap"> 
+						<div class="header_content_dropdown_group">
+							<a href="#">마이페이지</a>
+							<div class="header_dropdown">
+									<div class="arrow"></div>
+									<ul class="header_dropdown_menu">
+										<li><a href="#">ORDER</a></li>
+										<li><a href="#">WISHLIST</a></li>
+										<li><a href="#">Q&A</a></li>
+										<li><a href="#">MILEAGE</a> </li>
+										<li><a href="#">DELIVERY</a></li>
+										<li><a href="#">CHECK-IN</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="header_content_member_cart">
+							<a href="#"><i class="fas fa-shopping-cart"></i></a></div>
+					</div>
+					<div><button type="button" class="btn btn-basic login_open">로그인</button></div>
+					<div><button type="button" class="btn btn-primary">회원가입</button></div>
+		
+					</div>
+				</div>
+		</div>
+
+	
+	</header>
+</body>
+<!-- jQuery를 쓸 수 있게 ↓ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	//jQuery 문법
+	// $('선택자').옵션();
+	// $('#test').css('color', 'green');
+	// $ = jQuery
+	// ('#test') = 선택자가 (id가 test)
+	// .css() = 옵션 글자색을 녹색
+
+	// jQuery 이벤트 문법(클릭 포커스 블러 등)
+	//	 $(document).on('이벤트', '선택자', function(){
+	// 			이벤트 발생시 동작할 내용들
+	//   });
+
+	// 	$(document).on('click','#test', function(){
+	//			$(this).css('color','blue');
+	//  });
+
+	// $(document).on : 문서 전체에서~
+	// ('click') : 클릭이벤트가 발생하면
+	// (#test) : 아이디가 test인
+	// function(){}: 익명함수(이름없는 함수)
+	// $(this) : 나 자신(여기서는 #test)
+	// 해석: 문서전체에서 id가 test인 태그가 클릭되면 나를 (#test) 글자색을 blue로 변경해라
+
+	//로그인 input(id,pw)에 focus되면 테ㅜ리색 벼남
+	$(document).on('focus','.input_login',function(){
+		$(this).css('border-bottom','1.5px solid #2d3436');
+	});
+
+	$(document).on('blur','.input_login',function(){
+			$(this).css('border-bottom','1.5px solid #f1f1f1');
+	});
+
+
+	// Login 버튼 클릭시 Modal창 Open
+	// 문서에서      클릭하면 
+	$(document).on('click','.login_open', function(){
+		// alert('test')
+		$('.modal_wrap').css('display','flex');
+		// 로그인 버튼 클릭시 아이디를 바로 입력 할 수 있게 해줌
+		$('#login_id').focus();
+	});
+
+	// MODAL 창의 X버튼을 클릭하면 Model창 Close
+	$(document).on('click','.login_close', function(){
+		$('.modal_wrap').css('display', 'none');
+		$('.frm_login')[0].reset();
+		//  = $('.input_login').val(''); : 
+		// 		아이디,비밀번호에 정보를 입력하고 닫은 후 값을 공백('')값으로  바꾸는것
+		$('.pw_eye').prev().attr('type','password');
+		$('.pw_eye').html('<i class="fas fa-eye-slash"></i>').css('color','#AAA');	
+	});
+
+	// 값을 가져오는 방법
+		// <span class = "aaa">동토리</span>
+		// <input type="text" class="dobby">동비</span>
+		//
+		// input태그 값 가져오는 방법
+		// : 서버단으로 값을 보낼 때 사용하는 태그들이 대부분 val
+		// $('.dobby').val() ;
+		//input태그 값 넣는 방법
+		// $('.dobby').val('메롱');
+
+		//input 태그 이외의 값 가져오는 방법
+		// $('.aaa').text();
+		//input 태그 이외의 값 넣는  방법
+		// $('.aaa').text('뭐시여');
+
+		// 태그의 옵션(attribute)을 가져오고 싶을 때
+		// $('.dobby').attr('type');
+		// $('.dobby').attr('class');
+
+
+	// Login Modal창 암호 보이기 or 숨기기
+	$(document).on('click','.pw_eye', function(){
+		// alert('눈!@!'); 실행 되는지 안되는지 확인 할 수 있는 방법
+		// prev() : 윗형제 , next() : 아래형제
+			var code = $(this).prev().attr('type');
+			alert(code);
+
+			if(code == 'password'){
+
+				 $(this).prev().attr('type','text');
+
+				// 가려진 눈 모양을 보이는 눈 모양으로 바꿔주세요, 색상은 #666으로 해주세요
+				$(this).html('<i class="fas fa-eye"></i>').css('color','#666');	
+			}else{
+				$(this).prev().attr('type','password');
+				$(this).html('<i class="fas fa-eye-slash"></i>').css('color','#AAA');	
+				// pw_eye에 있는 태그를 다 지우고 i class="fas fa-eye-slash 를 넣어줄거야
+				// .css('color','#AAA') : color를 #AAA로 바꿔줄거야
+				// 추가로 .css('font-size','13px') font-size를 13px 해줄거야
+				// 계속 .css 추가 가능 
+			}
+
+
+	});
+
+</script>
+
+</html>
