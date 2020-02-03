@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>네이버: 로그인 </title>
+	<link rel="icon" type="image/png" href="../img/naver/naversm.png">
+	<script src="https://kit.fontawesome.com/b9b96aae93.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		*{
+			font-family: Dotum, '돋움', Helvetica, sans-serif;
+			box-sizing: border-box;
+		}
+		body, h1, h2, h3, h4, h5, h6, ul, p {
+			margin: 0; padding: 0;
+			font-size: 12px;
+		}
+		body{ background-color: #f5f6f7; }
+		ul{ list-style: none; }
+		a{
+			text-decoration: none;
+			color: inherit;
+		}
+	
+		.wrap{
+			width: 768px;
+			margin: 0 auto;
+			/*border: 1px solid black;*/
+		}
+		.header{
+			padding: 62px 0px 20px;
+			position: relative;
+		
+		}
+		.n_logo{
+			/* a 태그는 기본: inline , inline은 (  )만 줄 수 있음, 근데 왜 block으로 했을까?
+				margin auto를 써서 가운데정렬로 만들어줘야해서 */
+			display: block;
+			width: 240px;
+			height: 44px;
+			background: url("../img/naver/pc_sp_join.png") 0 -106px;
+			margin: auto;
+		}
+		.join_content{
+			width: 460px;
+			margin: 0 auto;
+			
+		}
+		.row_group{
+			overflow: hidden;
+			width: 100%;
+		}
+		.join_title{
+			margin: 10px 0 8px;
+			font-size: 14px;
+			font-weight: 700;
+			color: black;
+			
+		}
+		.ps_box{
+			/*span은 기본 inline*/
+			display: flex;
+			align-items: center;
+			position: relative;
+			width: 100%;
+			height: 51px;
+			border: 1px solid #dadada;
+			padding: 10px 14px 10px 14px;
+			background: #fff;
+			vertical-align: top;
+		}
+		.int_id{
+			padding-right: 110px;
+		}
+		.int_pass{
+			padding-right: 40px;
+		}
+		.int{
+			display: block;
+			position: relative;
+			width: 100%;
+			height: 29px;
+			padding-right:25px;
+			line-height: 29px;
+			border: none;
+			background: #fff;
+			font-size: 15px;
+			z-index: 10;
+		}
+		.addr_box{
+			display: block;
+		}
+
+		.step_url{
+			position: absolute;
+			/*top: 16px;*/ 
+			right: 13px;
+			font-size: 15px;
+			/*line-height: 18px;*/
+			color: #8e8e8e;
+		}
+		.join_err_msg{
+			display: block;
+			margin: 3px 0 7px;
+			font-size: 12px;
+			line-height: 14px;
+			color: red;
+			height: 15px;
+			visibility: hidden;
+			
+		}
+		.pw_lock{
+			background-image: url('https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png');
+			background-repeat: no-repeat;
+			background-size: 125px 75px;
+			cursor: pointer;
+			width: 24px;
+			height: 24px;
+			display: inline-block;
+		}
+		.repw_lock{
+			background-image: url('https://static.nid.naver.com/images/ui/join/m_icon_pw_step.png');
+			background-repeat: no-repeat;
+			background-size: 125px 75px;
+			cursor: pointer;
+			width: 24px;
+			height: 24px;
+			display: inline-block;
+			background-position: -27px 0;
+
+		}
+			/* table  display : table
+			td  display : table-cell
+			div  display : block */
+			
+		.bir_wrap{
+			/* table 태그 생성 , display :flex 해도 됌*/
+			display: table;
+			width: 100%;
+		}
+
+		.bir_mm, .bir_dd{
+			padding-left: 10px;
+		}
+		
+		.bir_yy, .bir_mm, .bir_dd{
+			display: table-cell;
+			table-layout: fixed;
+			width: 147px;
+			vertical-align: middle;
+		}
+		
+		.sel{
+			background: #fff url('https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif') 100% 50% no-repeat;
+			background-size: 20px 8px;
+			width: 100%;
+			height: 29px;
+			font-size: 15px;
+			line-height: 18px;
+			color: #000;
+			border: none;
+			-webkit-appearance: none;
+		}
+		.choice{
+			font-size: 12px;
+			font-weight: 400;
+			color: #8e8e8e;
+		}
+
+		.btn_double_area{
+			margin: 30px 0 9px;
+		}
+		.btn_type{
+			display: block;
+			width: 100%;
+			padding: 21px 0 17px;
+			font-size: 20px;
+			font-weight: 700;
+			text-align: center;
+			cursor: pointer;
+		}
+		.btn_agree{
+			color:white;
+			background-color: #03c75a;
+		}
+		#add_num{
+			width: 100px;
+			height: 30px;
+			margin-bottom: 3px;
+		}
+
+
+		#add_content {
+			width: 100%;
+			height: 40px;
+			margin-bottom: 2px;
+		}
+		/* footer */
+		#footer{
+					/* padding 두개 일 떄 상하 좌우 */
+			padding: 15px 0;
+		}
+
+		#footer > ul{
+			/* padding 세개 일 때 : 상  좌우  하 */
+			margin: 0 auto 9px;
+			text-align: center;
+		}
+		#footer * {
+			font-size: 11px;
+			line-height: normal;
+			list-style: none;
+			color: #333;
+		}
+		#footer > ul > li{
+			/* inline : 옆으로 붙이기*/
+			display: inline;
+			padding: 0 5px 0 7px;
+			border-left: 1px solid #dadada;
+
+		}
+		#footer > ul > li  a:hover{
+			color: #1fbc02;
+			text-decoration: underline;
+		}
+		/* footer의 모든 ul의 모든 li태그의  첫번쨰 자식(레벨이 같은애들)만 0px 준다
+			결과: 이용약관 앞에 | 가 없어짐 
+			!important : 우선순위가 가장 높음 (우선순위에 대해서도 공부), 왠만하면 안 쓰는 것을 추천 
+			디자인의 구조를 모른다는 것을 알리는 거임 */
+		#footer ul li:first-child{
+			border-left: 0px!important;
+		}
+		
+		#addr_logo{
+			width: 63px;
+			height: 11px;
+		}
+
+		#address{
+			margin: 0 auto;
+			text-align: center;
+		}
+		#address * {
+			font: 9px verdana;
+		}
+		#address a {
+			font-weight: bold;
+		}
+		#address a:hover{
+			color: #1fbc02;
+		}		
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<header><div class="header">
+			<h1 class="naver_logo"><a href="#" class="n_logo"></a></h1>
+		</div></header>
+
+		<section>
+			<!-- 입력한 값들을 서버단에 옮기기 위해선 form 로 싸야함, name,action,method 무조건
+					action: 어떤 클래스 어떤 메서드의 목적지 , POST : 값을 숨겨서 보내는 방법 / get: 값을 보내는 게 노출   -->
+			<form name="frm_join" action="" method="POST" >
+				<div class="container">
+					<div class="join_content">
+						<div class="row_group">
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="id">아이디</label>
+								</h3>
+								<div class="ps_box int_id">
+									<input type="text" id="uid" name="uid" class="int" >
+									
+								</div>
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+							
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="pswd1">비밀번호</label>
+								</h3>
+								<div class="ps_box int_pass">
+									<input type="text" id="upw" name="upw" class="int">
+									<span class="step_url"><span class="pw_lock"></span></span> 
+								</div>
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="pswd2">비밀번호 재확인</label>
+								</h3>
+								<div class="ps_box int_pass">
+									<input type="password" id="urpw" name="urpw" class="int">
+									<span class="step_url"><span class="repw_lock"></span></span> 
+								</div>
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+
+						</div>	
+						<div class="row_group">
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="name">이름</label>
+								</h3>
+								<div class="ps_box">
+									<input type="text" id="uname" name="uname" class="int">
+								</div>
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+						</div>	
+						<div class="row_group">
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="addr">주소</label>
+								</h3>
+								<div class="addr_design">
+									<input type="text" id="add_num" placeholder="우편번호">
+		 						 	<input type="button" id="add_num" onclick="sample6_execDaumPostcode()" value="우편번호 >" ><br>
+		   							<input type="text" id="add_content" placeholder="주소"><br>
+		   							<input type="text" id="add_content" placeholder="상세주소">							
+								</div>
+								
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+						</div>	
+
+							<div class="join_row join_brithday">
+								<h3 class="join_title">
+									<label for="yy">생년월일</label>
+								</h3>
+								<div class="bir_wrap">
+									<div class="bir_yy">	
+										<div class="ps_box">
+											<input type="text" id="yy" name="yy" class="int" placeholder="년(4자)">
+										</div>
+									</div>
+									<div class="bir_mm">
+										<div class="ps_box">
+											<select id="mm" class="sel">
+												<option>월</option> 
+												<option value="01">1</option>
+												<option value="02">2</option>
+												<option value="03">3</option>
+												<option value="04">4</option>
+												<option value="05">5</option>
+												<option value="06">6</option>
+												<option value="07">7</option>
+												<option value="08">8</option>
+												<option value="09">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+									</div>
+									<div class="bir_dd">
+									  	<div class="ps_box">
+									  		<input type="text" id="dd" placeholder="일" class="int" name="">
+									  	</div>
+									</div>
+								</div>
+									<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+				
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="male">성별</label>
+								</h3>
+								<div class="ps_box">
+									<select class="sel" id="male">
+										<option>성별</option>
+											<option value="m">남성</option>
+											<option value="w">여성</option>
+									</select>
+								</div>
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="email">본인 확인 이메일<span class="choice">(선택)</span></label>
+								</h3>
+								<div class="ps_box">
+									<input type="text" id="uemail" name="uemail" class="int" placeholder="선택입력">
+								</div>
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+			
+							<div class="join_row">
+								<h3 class="join_title">
+									<label for="phone">휴대전화</label>
+								</h3>
+								<div class="ps_box">
+									<input type="tel" id="uphone" name="uphone" class="int" placeholder="-없이 입력 예)01012345678">
+								</div>
+								<div class="join_err_msg"> * 필수 정보입니다.</div>
+							</div>
+						<!-- </div> -->
+
+						<div class="btn_double_area">
+							<span><a href="#" class="btn_type btn_agree">가입하기</a></span>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+		</section>
+		<footer>
+			<!-- div를 id랑 같이 만들거야 , div#footer + ctrl + space -->
+			<div id="footer">
+				<ul>
+					<li><a href="#">이용약관</a></li>
+					<li><strong><a href="#">개인정보처리방침</a></strong> </li>
+					<li><a href="#">책임의 한계와 법적고지</a></li>	
+					<li><a href="#">회원정보 고객센터</a></li>	
+				</ul>
+
+			<div id="address">
+				<span>
+					<a href="#">
+						<img id="addr_logo" src="../img/naver/naver_logo.png">
+					</a>
+				</span>
+				<span>Copyright</span>
+				<span>ⓒ</span>
+				<span><strong><a href="#">LAURENT Corp.</a></strong></span>
+				<span>All Rights Reserved.</span>
+			</div>
+			
+
+		</footer>
+	</div>
+</div>	
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/validation.js"></script>
+<!-- js를 사용할 수 있게 연결  -->
+<script type="text/javascript">
+	// ↓ $(document).ready(function(){});	과 같음
+	$(function(){
+
+		//아이디 유효성체크
+		$('#uid').keyup(function(){
+			// 사용자가 입력하 ㄴ값의 좌우여백을 제거하고 id에 입력
+			var id = $(this).val().trim(); // 사용자가 입력한 값
+
+			// validatation.js의 checkId로 유효성 체크 실행후 결과를 result에 담음
+			var result = joinValidate.checkId(id);
+						// 1.joinValidate의  checkId찾아 매개변수로 id 값을 보내주세요~
+						// 2. 유효성 체크 받은 값을 받아서 
+			
+			ckDesign(result.code, result.desc,0,0);
+			// 유효성체크 결과로 테두리색과 err메세지를 출력하는 함수 실행
+
+		});
+
+		//비밀번호 유효성 체크
+		$('#upw').keyup(function(){
+				var pw = $.trim($(this).val());
+				var result =  joinValidate.checkPw(pw);
+
+				ckDesign(result.code, result.desc, 1, 1);
+
+		});
+	});
+
+	function ckDesign(code, desc, line, msg){
+	
+			if(code != 0){ // 통과 x
+				// 테두리 색상 변경
+				$('.ps_box:eq('+line+')').css('border', '1px solid #d95339');
+				// 오류메세지 
+				$('.join_err_msg:eq('+msg+')').css('visibility', 'visible').text(desc).css('color','#d95339');
+
+				return false;
+			}else{ // 통과 o
+				$('.ps_box:eq('+line+')').css('border', '1px solid #3885CA');
+				$('.join_err_msg:eq('+msg+')').css('visibility', 'visible').text(desc).css('color','#3885CA');
+
+				return true;
+			}
+
+	
+
+	}
+
+	
+
+</script>
+</html>
