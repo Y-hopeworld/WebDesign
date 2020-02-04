@@ -290,7 +290,7 @@
 									<label for="pswd2">비밀번호 재확인</label>
 								</h3>
 								<div class="ps_box int_pass">
-									<input type="password" id="urpw" name="urpw" class="int">
+									<input type="text" id="urpw" name="urpw" class="int">
 									<span class="step_url"><span class="repw_lock"></span></span> 
 								</div>
 								<div class="join_err_msg"> * 필수 정보입니다.</div>
@@ -438,7 +438,6 @@
 <script type="text/javascript">
 	// ↓ $(document).ready(function(){});	과 같음
 	$(function(){
-
 		//아이디 유효성체크
 		$('#uid').keyup(function(){
 			// 사용자가 입력하 ㄴ값의 좌우여백을 제거하고 id에 입력
@@ -451,7 +450,6 @@
 			
 			ckDesign(result.code, result.desc,0,0);
 			// 유효성체크 결과로 테두리색과 err메세지를 출력하는 함수 실행
-
 		});
 
 		//비밀번호 유효성 체크
@@ -460,7 +458,6 @@
 				var result =  joinValidate.checkPw(pw);
 
 				ckDesign(result.code, result.desc, 1, 1);
-
 		});
 	});
 
