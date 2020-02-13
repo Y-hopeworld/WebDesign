@@ -9,14 +9,15 @@
 	<style type="text/css">
 	 div.header_wrap{
 	 	width: 100%;
-	 	background-color: white;
+	 	background-color: #fff;
 	 	box-shadow: 0 0 1px 1px rgba(20,23,28,.1), 0 3px 1px 0 rgba(20,23,28,.1);
 	 	/* 누가 먼저 앞으로 나올지 정해주는 명령어, 숫자가 클수록 앞으로 나옴*/
 	 	z-index: 999;
 
 	 }
 	 div.header_content{
-	 	width: 1400px;
+	 	width: 1700px;
+	 	background-color:#fff;
 	 	margin: 0 auto;
 	 	height: 65px;
 	 	box-sizing: border-box;
@@ -31,13 +32,31 @@
 	 }
 	 
 	 .header_content_logo{}/*background-color:red;*/
-	 .header_content_search {} /* : 검색창과 돋보기 사이 간격  붙이기 background-color: blue*/
+	.header_content_search {} 
+		div.content{
+			float: left;
+			margin-right: 100px;
+		}
+
+		div.layout_category{			
+			margin:0px 30px;	
+		}
+		div.layout_category{
+			display: flex;
+			align-items: center;	
+		}
+		div.category{							
+			width: 90px;
+			height: 60px;
+			text-align: center;
+			line-height: 68px;
+		}
 	 .header_content_search_group{
 	 	display: flex;
 	 	align-items: center;
 	 	background-color: #f2f3f5;
 	 	border-radius: 2px;
-
+		
 	 }
 	 .header_content_search_input{
 				background-color: transparent;
@@ -50,9 +69,7 @@
 				padding: 10px 12px;
 				outline: none; 
 				/* input 태그시 Focus시 파랑테두리가 나타나는데 그걸 없애주는 것*/
-
   	 }
-
 	 .header_content_search_btn{
 	 	/* transparent :투명*/
 	 	border-color: transparent;
@@ -60,9 +77,10 @@
 		width: 44px;
 	 	height: 44px;
 	 	cursor: pointer;
-	 	color: #0652DD;
+	 	color: #2d3436;
 	 	border-top-right-radius: 2px;
 	 	border-bottom-right-radius: 2px;
+
 	}
 	.header_content_search_btn:hover{
 		background-color: #95afc0;
@@ -75,9 +93,10 @@
 	 	justify-content: space-between;
 	 	width: 574px;
 	 	height: 70px;
-	 	} /*background-color: green;*/
+	 	/*background-color: green;*/
+	 	} 
 	.header_content_nav > div {
-		/*border: 1px solid red;*/
+		
 
 	}
 
@@ -107,7 +126,7 @@
 			font-weight: 400;
 			border: 1px solid transparent;
 			border-radius:2px;
-			afheight: 45px;
+			height: 45px;
 			color: #506763;
 			line-height: 19px;
 
@@ -137,8 +156,8 @@
 	 	/*background-color: yellow;*/
 
 	.header_content_logo_img{
-		width: 80px;
-		height:70px;
+		/*width: 70px;*/
+		height:65px;
 		vertical-align: middle;
 
 
@@ -289,7 +308,7 @@
 		text-align: center;
 	}
 
-	a#btn_login{
+	button.btn_login{
 			display: block;
 			background-color: #2d3436;
 			color: white;
@@ -298,6 +317,7 @@
 			text-align: center;
 			padding: 13px 13px;
 			margin: 13px 0px 13px 0px;
+			cursor: pointer;
 
 	}
 	a#conn_login{
@@ -355,15 +375,16 @@
 			<div class="login_box">
 				<div class="login_sign">Login</div>
 				<section>
-				<form class="frm_login">
+				<form name="" action="" method="" class="frm_login">
 						<div class="div_input" id="login_input">
-							<input type="text" placeholder="아이디" class="input_login" id="login_id" >
+							<input type="text" placeholder="아이디" required class="input_login" id="login_id"  >
+							<!-- <input type="email" placeholder="이메일" required class="input_login" id="login_id"  > -->
 								<span class="input_box"></span>
 						</div>	
 						
 
 						<div class="div_input" id="login_input">
-							<input type="password" placeholder="비밀번호" class="input_login" id="login_pw">
+							<input type="password" placeholder="비밀번호" required class="input_login" id="login_pw" required minlength="6" maxlength="18">
 							<span class="pw_eye"> 
 								<i class="fas fa-eye-slash"></i>
 							</span>
@@ -371,15 +392,15 @@
 					
 							<div class="id_save">
 								<input type="checkbox" id="id_save">
-								<label for="id_save" class="label">아이디 저장</label>
+								<label for="id_save" class="label" >아이디 저장</label>
 							</div>
-						<div>
-							<a id="btn_login" href="#">로 그 인</a>
+						<div class="login_btn">
+							<button type="submit" class="btn_login" >로그인</button>
 						</div>	
 				</form>
 					<div class="start">
 						<div>
-							<a href="http://www.naver.com" id="conn_login"><i class="fab fa-line">&nbsp;네이버로 시작하기</i></a>
+							<a href="http://www.naver.com" id="conn_login" ><i class="fab fa-line">&nbsp;네이버로 시작하기</i></a>
 						</div>
 						<div>
 							<a href="#" id="conn_login"><i class="fab fa-kaggle">&nbsp;카카오로 시작하기</i></a>
@@ -407,22 +428,6 @@
 
 	
 
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<header>
 		<!-- 1. header에 있다고 표시
 			 2. index.html에 있는 wrap과 content 충돌이 날 수도 있기 때문에  -->
@@ -432,27 +437,53 @@
 
 				 <div class="header_content_logo">
 				 	<a href="#">
-				 		<img class="header_content_logo_img" src="../../img/1.png" alt="로고이미지">
+				 		<img class="header_content_logo_img" src="../../img/20.PNG" alt="로고이미지">
 						<!-- <span>Laurent</span> -->
 					</a>
 				 	</div>
 				 	
-				 <div class="header_content_search">
-					<form name="frm_search" action="" method="GET">
-						<div>
-							<input type="text" placeholder="무엇이든 검색하기" name="keyword" class="header_content_search_input">
-							<button type="button" class="header_content_search_btn"> 
-								<i class="fas fa-search"></i></button>		
+				<div class="content_wrap">
+					<div class="content">
+						<div class="layout_category">
+							<div class="category"> 
+								<a href="#" class="category_btn">NEW 5%</a>  	
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">BEST 10</a> 
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">OUTWEAR</a> 
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">TOP</a> 
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">BOTTOM</a> 
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">ACC</a> 
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">BAG</a> 
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">SHOES</a> 
+							</div>
+							<div class="category">
+								<a href="#" class="category_btn">SALE</a> 
+							</div>
+							
 						</div>
-					</form>	
+					</div>
 				</div>
+
 				<div class="header_content_nav">
 					<div class="header_content_dropdown_group "><a href="#" class="magicline">공지사항</a></div> 
 					<div class="header_content_dropdown_group"><a href="#" class="magicline">개인결제창</a></div>
 					
 					<div class="header_content_dropdown_wrap">	
 					<div class="header_content_dropdown_group">
-						<a href="#" class="magicline">문의하기</a>
+						<a href="#" class="magicline">Q&A</a>
 						<div class="header_dropdown">
 									<div class="arrow"></div>
 									<ul class="header_dropdown_menu">
@@ -535,7 +566,7 @@
 	// Login 버튼 클릭시 Modal창 Open
 	// 문서에서      클릭하면 
 	$(document).on('click','.login_open', function(){
-		// alert('test');
+		// alert('test')
 		$('.modal_wrap').css('display','flex');
 		// 로그인 버튼 클릭시 아이디를 바로 입력 할 수 있게 해줌
 		$('#login_id').focus();
