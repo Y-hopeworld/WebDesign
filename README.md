@@ -1,3 +1,3 @@
-# WebDesign
+# WebDesign HTML,CSS,jQuery를 이용한 웹디자인 
 
-HTML,CSS,jQuery를 이용한 웹디자인 
+
